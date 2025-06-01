@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  # 開発用コンテナ（ホットリロード）
+  dev:
+    image: node:20-slim
+    container_name: next-dev
+    working_dir: /app
+    command: yarn dev -p 3010
+    environment:
+      NODE_ENV: development
+      PORT: 3010
+    volumes:
+      # ソースを双方向同期（node_modules は匿名ボリュームで上書き防止）
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - "3010:3010"
+
+  # 本番用コンテナ（builder→runtime の Dockerfile を使用）
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: next-prod
+    environment:
+      NODE_ENV: production
+      PORT: 3010
+    ports:
+      - "3010:3010"
+    restart: always
