@@ -1,42 +1,295 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --black: #0b0b0b;
+  --white: #ffffff;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  --g-950: #0b0b0b;
+  --g-900: #111111;
+  --g-800: #1b1b1b;
+  --g-700: #2a2a2a;
+  --g-600: #3a3a3a;
+  --g-500: #555555;
+  --g-400: #777777;
+  --g-300: #9a9a9a;
+  --g-200: #c0c0c0;
+  --g-150: #d7d7d7;
+  --g-100: #ededed;
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+  --header-h: 56px;
+  --max-w: 980px;
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --cloud-svg-default: var(--cloud-svg-0);
+  --cloud-svg-0: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20260%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M140%20205%20C100%20212%2070%20188%2082%20155%20C50%20142%2050%2098%2090%2085%20C88%2045%20140%2020%20180%2045%20C205%2010%20260%2015%20280%2055%20C305%2025%20360%2030%20380%2070%20C410%2040%20470%2055%20480%2095%20C520%2090%20560%20120%20540%20155%20C580%20175%20560%20215%20520%20210%20C500%20245%20440%20245%20410%20215%20C385%20250%20320%20250%20295%20218%20C270%20245%20220%20240%20205%20215%20C185%20230%20155%20225%20140%20205%20Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%23111111%22%20stroke-width%3D%226%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  --cloud-svg-1: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20260%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M120%20195%20C70%20195%2055%20170%2070%20150%20C40%20135%2045%2095%2080%2090%20C90%2055%20125%2035%20165%2055%20C190%2020%20245%2020%20265%2055%20C310%2030%20350%2035%20370%2070%20C400%2045%20455%2045%20480%2080%20C520%2075%20560%20105%20545%20140%20C585%20155%20575%20190%20540%20200%20C515%20220%20485%20215%20460%20205%20C430%20235%20365%20235%20340%20205%20C315%20235%20255%20235%20230%20205%20C205%20220%20155%20215%20120%20195%20Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%23111111%22%20stroke-width%3D%226%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  --cloud-svg-2: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20260%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M185%20215%20C150%20230%20120%20210%20132%20178%20C102%20170%2098%20132%20128%20116%20C118%2078%20155%2048%20196%2060%20C214%2022%20270%2014%20298%2050%20C332%2020%20378%2034%20390%2072%20C436%2062%20472%2092%20456%20132%20C492%20146%20492%20190%20456%20198%20C440%20232%20400%20232%20372%20214%20C358%20248%20308%20254%20286%20226%20C268%20252%20214%20246%20200%20220%20C196%20230%20188%20226%20185%20215%20Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%23111111%22%20stroke-width%3D%226%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  --cloud-svg-3: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20260%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M150%20208%20C110%20218%2072%20196%2086%20160%20C52%20152%2054%20108%2092%2096%20C86%2060%20118%2032%20162%2048%20C170%2018%20222%2014%20246%2044%20C274%2014%20328%2018%20348%2056%20C372%2032%20416%2038%20430%2072%20C468%2062%20506%2090%20490%20130%20C530%20140%20532%20182%20500%20198%20C488%20228%20448%20232%20424%20212%20C408%20242%20360%20248%20336%20226%20C314%20252%20254%20250%20232%20224%20C206%20244%20170%20234%20150%20208%20Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%23111111%22%20stroke-width%3D%226%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  --cloud-svg-4: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20260%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M165%20205%20C120%20210%2098%20188%20104%20160%20C74%20148%2076%20112%20104%2098%20C96%2064%20124%2036%20164%2050%20C186%2020%20232%2022%20252%2052%20C284%2036%20326%2040%20342%2070%20C366%2044%20426%2052%20440%2090%20C478%2086%20526%20118%20510%20156%20C544%20170%20540%20210%20506%20212%20C490%20240%20440%20246%20414%20218%20C392%20252%20334%20254%20310%20226%20C286%20252%20238%20248%20224%20222%20C206%20236%20186%20228%20165%20205%20Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%23111111%22%20stroke-width%3D%226%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
   margin: 0;
+  color: var(--g-900);
+  background: var(--white);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+  "Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: inherit;
+/* 固定ヘッダー分の余白 */
+.main {
+  padding-top: var(--header-h);
+}
+
+/* ページ全体 */
+.page {
+  min-height: calc(100vh - var(--header-h));
+  padding: 24px 18px 40px;
+  overflow-x: clip;
+}
+
+/* ヒーロー */
+.hero {
+  max-width: var(--max-w);
+  margin: 0 auto 22px;
+}
+
+.heroTitle {
+  margin: 0 0 10px;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+}
+
+.heroLead {
+  margin: 0;
+  color: var(--g-600);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* “雲”フィールド */
+.cloudField {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* PC: 横位置が揺れる雲っぽい並び */
+@media (min-width: 900px) {
+  .cloudField {
+    position: relative;
+    gap: 18px;
+    padding: 10px 0 4px;
+  }
+}
+
+/* フッター */
+.footer {
+  max-width: var(--max-w);
+  margin: 28px auto 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--g-150);
+}
+
+.footerText {
+  color: var(--g-500);
+  font-size: 12px;
+}
+
+/* ヘッダー */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  background: var(--black);
+  color: var(--white);
+  z-index: 50;
+  border-bottom: 1px solid #1b1b1b;
+}
+
+.headerInner {
+  height: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  color: var(--white);
   text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  font-size: 14px;
+  text-transform: lowercase;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.cloudCard[data-cloud-shape="0"] { --cloud-svg: var(--cloud-svg-0); }
+.cloudCard[data-cloud-shape="1"] { --cloud-svg: var(--cloud-svg-1); }
+.cloudCard[data-cloud-shape="2"] { --cloud-svg: var(--cloud-svg-2); }
+.cloudCard[data-cloud-shape="3"] { --cloud-svg: var(--cloud-svg-3); }
+.cloudCard[data-cloud-shape="4"] { --cloud-svg: var(--cloud-svg-4); }
+
+/* CloudLinkCard（雲枠SVG方式：反復タイルではなく単一パスで“不均一なもこもこ”を作る */
+.cloudCard {
+  background: transparent;
+  border: none;
+  border-radius: 18px; /* 念のため（SVGの外側に影が落ちるときの角の違和感を緩和）*/
+  padding: 34px 22px 28px;
+  min-height: 220px;
+  position: relative;
+  overflow: visible;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+/* 雲枠（SVGを1枚重ねる：strokeが“枠線”になる） */
+.cloudCard::before {
+  content: "";
+  position: absolute;
+  inset: -22px; /* 枠線分だけ外側へ */
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  transition: filter 160ms ease;
+  will-change: filter, transform;
+  background-image: var(--cloud-svg, var(--cloud-svg-default));
+}
+/* hover時の影は、枠線の雰囲気に合わせて柔らかめ */
+.cloudCard:hover::before,
+.cloudCard:focus-within::before {
+    filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.12));
+}
+.cloudCard:hover {
+  transform: translateY(-6px);
+}
+
+/* リンク領域 */
+.cloudLink {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  text-align: center;
+  min-height: 100%;
+
+  /* 雲の内側に収まる横幅に制限（左右がくびれる形状でもはみ出しにくくする） */
+  width: 100%;
+  max-width: calc(100% - 200px);
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-inline: 6px;
+}
+
+.cloudTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  /* 内側幅を親に追従させて折り返しが効くようにする */
+  width: 100%;
+  max-width: 100%;
+}
+
+.cloudIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--g-200);
+  background: var(--g-100);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+.cloudIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.cloudHead {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 100%;
+}
+
+.cloudTitle {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.cloudUrl {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--g-500);
+  max-width: min(62ch, 100%);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  text-align: center;
+}
+
+.cloudDesc {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--g-700);
+  line-height: 1.65;
+  max-width: min(64ch, 100%);
+  text-align: center;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.cloudCta {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--g-600);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* PC: “ランダム風”に揺らす（page.tsx で CSS 変数付与） */
+@media (min-width: 900px) {
+  .cloudCard {
+    min-height: 240px;
+    transform: translate3d(var(--cloud-x, 0px), var(--cloud-y, 0px), 0) rotate(var(--cloud-r, 0deg));
+  }
+  .cloudCard:hover {
+    transform: translate3d(var(--cloud-x, 0px), calc(var(--cloud-y, 0px) - 2px), 0)
+    rotate(var(--cloud-r, 0deg));
+  }
+}
+@media (max-width: 600px) {
+  .cloudCard {
+    padding: 36px 18px 30px;
+    min-height: 260px;
+  }
+  .cloudUrl,
+  .cloudDesc {
+    max-width: 100%;
   }
 }
