@@ -1,6 +1,6 @@
 import CloudLinkCard from "@/components/CloudLinkCard"
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBook, faBookOpen, faSeedling} from "@fortawesome/free-solid-svg-icons";
 import {faGithub, faTwitch, faTwitter, faYoutube} from "@fortawesome/free-brands-svg-icons";
 
@@ -9,6 +9,10 @@ type Service = {
   url: string
   description: string
   icon: React.ReactNode
+}
+
+type CssVars = React.CSSProperties & {
+  [key: `--${string}`]: string | number
 }
 
 function hashTo01(input: string) {
@@ -26,17 +30,17 @@ function cloudShapeIndex(url: string) {
   return Math.min(4, Math.floor(raw * 5))
 }
 
-function styleFromUrl(url: string) {
+function styleFromUrl(url: string) : CssVars {
   const t = hashTo01(url)
   const x = Math.round((t * 2 - 1) * 110)
   const r = (t * 2 - 1) * 2.2
   const y = Math.round((hashTo01(url + "#y") * 2 - 1) * 18)
 
   return {
-    ["--cloud-x" as any]: `${x}px`,
-    ["--cloud-y" as any]: `${y}px`,
-    ["--cloud-r" as any]: `${r}deg`
-  } as React.CSSProperties
+    "--cloud-x": `${x}px`,
+    "--cloud-y": `${y}px`,
+    "--cloud-r": `${r}deg`,
+  } satisfies CssVars
 }
 
 export default function Page() {
